@@ -1,7 +1,7 @@
-const ronin = require('ronin-server')
-const mocks = require('ronin-mocks')
+const {readFile, readFileSync} = require('fs');
 
-const server = ronin.server()
+const txt = readFileSync('./hello.txt', 'utf8');
 
-server.use('/', mocks.server(server.Router(), false, true))
-server.start()
+const names = readFile('./hello.txt', 'utf8', (error, text) => {
+    console.log(text);
+});
